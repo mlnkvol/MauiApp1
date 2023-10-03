@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp1.MainPage">
+
+    <ScrollView>
+        <VerticalStackLayout
+        Spacing="25"
+        Padding="30,0"
+        VerticalOptions="Center">
+
+            <Picker x:Name="goodsTypePicker" Title="Виберіть тип товару">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>Продукт</x:String>
+                        <x:String>Книга</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
+
+            <Entry x:Name="priceEntry" Placeholder="Ціна"/>
+            <Entry x:Name="originEntry" Placeholder="Країна походження"/>
+            <Entry x:Name="nameEntry" Placeholder="Назва"/>
+            <Entry x:Name="packagingDateEntry" Placeholder="Дата пакування"/>
+            <Entry x:Name="descriptionEntry" Placeholder="Опис"/>
+
+            <Button Text="Додати товар" Clicked="AddGoods_Clicked"/>
+            <Button Text="Видалити товар" Clicked="DeleteGoods_Clicked"/>
+
+            <ListView x:Name="goodsListView">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Column="0" Text="{Binding Price}" FontSize="Medium" />
+                                <Label Grid.Column="1" Text="{Binding CountryOfOrigin}" FontSize="Medium" />
+                                <Label Grid.Column="2" Text="{Binding Name}" FontSize="Medium" />
+                                <Label Grid.Column="3" Text="{Binding PackagingDate}" FontSize="Medium" />
+                                <Label Grid.Column="4" Text="{Binding Description}" FontSize="Medium" />
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </VerticalStackLayout>
+    </ScrollView>
+
+
+</ContentPage>
